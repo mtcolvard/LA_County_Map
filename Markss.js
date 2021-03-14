@@ -5,28 +5,32 @@ import {
 import { json } from 'd3';
 import { feature, mesh } from 'topojson';
 
-const LA_CountyUrl =
-  'https://gist.githubusercontent.com/mtcolvard/2ab4f30b99c7366c75dd58f29d167573/raw/a73f42681778b23e999a7995f101ab9da91f100f/LA_County_Boundary.json';
 const missingDataColor = 'gray'
 
 export const Markss = ({
-  boundaries: { neighbourhood },
+  boundaries: { neighborhood },
   rowByCity,
   width,
   height,
   colorScale,
-  colorValue }) => {
+  colorValue,
+  onHover
+}) => {
 
   const projection = geoEquirectangular()
     .center([-118, 33.33])
-    .fitSize([width, height], neighbourhood);
+    .fitSize([width, height], neighborhood);
   const path = geoPath(projection);
 
   return (
     <g className="marks">
-      {neighbourhood.features.map((feature) => {
-        const d = rowByCity.get(feature.properties.LABEL);
-        return <path fill={d ? colorScale(colorValue(d)) : missingDataColor} d={path(feature)} />
+      {neighborhood.features.map((feature) => {
+        const d = rowByCity.get(feature.properties.MODZCTA);
+        return <path
+          fill={d ? colorScale(colorValue(d)) : missingDataColor}
+          d={path(feature)}
+          onMouseEnter={() => { onHover(d); }}
+        />
       })}
     </g>
   );

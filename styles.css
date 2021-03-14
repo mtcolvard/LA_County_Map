@@ -6,3 +6,7 @@ body {
 pre {
   font-size: 7em;
 }
+
+.marks:hover {
+  fill:red;
+}

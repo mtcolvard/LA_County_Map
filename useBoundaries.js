@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { json } from 'd3';
 import { feature } from 'topojson';
 
-const LA_CommunitiesUrl = 'https://gist.githubusercontent.com/mtcolvard/8be528ebb5bfb5154675c338d946f330/raw/0bbb90b0a58d85e4e8a6713e5a888e623da0ba18/LA_County_Communities_minus_islands.json';
+const NYC_CommunitiesUrl = 'https://gist.githubusercontent.com/mtcolvard/b6e149b64853fdf15bbf3b5da7959c18/raw/cc1908f4b5ae3d78c25353bef815f393ee72048f/NYC_MODZCTA.json';
 
 export const useBoundaries = () => {
   const [boundaries, setBoundaries] = useState(null);
 
 
   useEffect(() => {
-    json(LA_CommunitiesUrl).then(topojsonData => {
-      const { LA_County_Communities } = topojsonData.objects;
+    json(NYC_CommunitiesUrl).then(topojsonData => {
+      const { NYC_MODZCTA } = topojsonData.objects;
       setBoundaries({
-        neighbourhood: feature(topojsonData, LA_County_Communities)
+      	neighborhood: feature(topojsonData, NYC_MODZCTA)
       });
     });
   }, []);

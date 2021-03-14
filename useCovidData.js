@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { csv } from 'd3';
 
-const csvUrl = 'https://gist.githubusercontent.com/mtcolvard/80dd33656f66a2d5fc1087e8d042537b/raw/00cbcfa1a179d2ab847c1ebe7fdc6af394e76312/LA_County_Cummulative_Covid.csv'
+const csvUrl = 'https://gist.githubusercontent.com/mtcolvard/3b781fbc735f6aac0cda7b42a7a272c6/raw/33c8cacbebbb3aa92e36f103c03f843583893834/gistfile2.csv'
 
 const row = d => {
-  d.caseRate = +d['CaseRate'];
+  d.PERCENT_POSITIVE = +d['PERCENT_POSITIVE'];
   return d;
 };
 
