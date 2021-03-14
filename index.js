@@ -29,18 +29,12 @@ const App = () => {
     rowByCity.set(d.MODIFIED_ZCTA, d);
   });
 
-  const colorValue = d => +d.PERCENT_POSITIVE
-  console.log(colorValue)
+  const colorValue = d => +d.PERCENT_POSITIVE;
 
-//  const colorScale =
-  //  scaleThreshold()
-    //	.domain([100,150,200,250,300,350,400,450,500])
-    	//.range(schemeBlues[9]);
-
-  const colorScale =
-    scaleSequential(interpolateBlues)
-    	.domain([0, max(covidData, colorValue)])
-
+ 	const colorScale =
+ 	scaleThreshold()
+ 	.domain([4,6,8,10,12,14,16,18,20])
+ 	.range(schemeBlues[9]);
 
   return (
     <svg width={width} height={height}>

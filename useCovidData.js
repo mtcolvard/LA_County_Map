@@ -15,8 +15,8 @@ export const useCovidData = () => {
   useEffect(() => {
     csv(csvUrl, row).then(setCovidData);
   }, []);
-
   return covidData;
   };
+
 
   

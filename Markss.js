@@ -5,8 +5,8 @@ import {
 import { json } from 'd3';
 import { feature, mesh } from 'topojson';
 
-const missingDataColor = 'gray'
-
+//const missingDataColor = 'rgba(0, 140, 255, 0)'
+ const missingDataColor = 'gray'
 export const Markss = ({
   boundaries: { neighborhood },
   rowByCity,
@@ -26,10 +26,11 @@ export const Markss = ({
     <g className="marks">
       {neighborhood.features.map((feature) => {
         const d = rowByCity.get(feature.properties.MODZCTA);
+
         return <path
           fill={d ? colorScale(colorValue(d)) : missingDataColor}
           d={path(feature)}
-          onMouseEnter={() => { onHover(d); }}
+          onMouseEnter={() => { onHover(d) }}
         />
       })}
     </g>
